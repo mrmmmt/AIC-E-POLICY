@@ -1,4 +1,5 @@
-from tkinter import Tk, ttk, Frame, LabelFrame, scrolledtext, Button, Entry, Scale, Canvas, StringVar, filedialog, messagebox
+from tkinter import ttk, scrolledtext, filedialog, messagebox
+from tkinter import Tk, Frame, LabelFrame, Button, Entry, Scale, Canvas, StringVar
 from tkinter import END, HORIZONTAL, CENTER
 import base64
 from icon import Icon
