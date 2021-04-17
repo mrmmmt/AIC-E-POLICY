@@ -8,7 +8,7 @@
 - etc.
 
 ## 运行
-$ python [main.py]([www](https://github.com/mrmmmt/AIC-E-POLICY/blob/master/main.py)) 或直接打开可执行文件 [dist/电子保单下载.exe](https://github.com/mrmmmt/AIC-E-POLICY/tree/master/dist)
+$ python [main.py](https://github.com/mrmmmt/AIC-E-POLICY/blob/master/main.py) 或直接打开可执行文件 [dist/电子保单下载.exe](https://github.com/mrmmmt/AIC-E-POLICY/tree/master/dist)
 
 ## 版本
 ### v 1.1 (Build 20210416)
@@ -17,6 +17,6 @@ $ python [main.py]([www](https://github.com/mrmmmt/AIC-E-POLICY/blob/master/main
 
 ### v 1.0 (Build 20210415)
 - 实现多线程下载电子保单
-- 实现通过直接输入或由 `.txt .xls .xlsx` 文件导入待下载保单号
+- 实现通过直接输入或由 .txt .xls .xlsx 文件导入待下载保单号
 - 实现日志的显示及导出功能
 - 完成 GUI 界面编写
