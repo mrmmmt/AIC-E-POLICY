@@ -33,6 +33,10 @@
 $ python [main.py](https://github.com/mrmmmt/AIC-E-POLICY/blob/master/main.py) 或直接打开可执行文件 [dist/电子保单下载.exe](https://github.com/mrmmmt/AIC-E-POLICY/tree/master/dist)
 
 ## 版本
+### v 1.2 (Build 20210421)
+- 设置已存在保单文件中文件大于 150000 字节时跳过下载
+- 设置点击 开始下载 按钮时按钮变为不可点击状态 `self.download_button['state'] = 'disabled'`，下载结束恢复正常
+
 ### v 1.1 (Build 20210416)
 - 将 xlrd 库版本降低至 `xlrd 1.2.0`，以解决导入 .xlsx 格式文件出错问题
 - 通过 [mkicon.py](https://github.com/mrmmmt/AIC-E-POLICY/blob/master/mkicon.py) 生成 [icon.py](https://github.com/mrmmmt/AIC-E-POLICY/blob/master/icon.py)，以解决 pyinstaller 打包图标出错问题
