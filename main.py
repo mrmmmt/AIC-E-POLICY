@@ -168,18 +168,11 @@ class Download:
     def change_download_path(self):
         self.var_download_path.set(filedialog.askdirectory())
 
-
     def open_download_path(self):
-        try:
-            self.download_path = self.var_download_path.get()
-            if not os.path.exists(self.download_path):
-                os.makedirs(self.download_path)
-            os.startfile(self.download_path)
-        except Exception as e:
-            self.log_info_window['state'] = 'normal'
-            self.log_info_window.insert(END, '{}\n'.format(e))
-            self.log_info_window['state'] = 'disabled'
-            self.log_info_window.see(END)
+        self.download_path = self.var_download_path.get()
+        if not os.path.exists(self.download_path):
+            os.makedirs(self.download_path)
+        os.startfile(self.download_path)
 
 
     ## 下载线程
@@ -188,8 +181,7 @@ class Download:
         self.var_thread_num = Scale(download_config_frame, showvalue=True, from_=1, to=50, length=283, orient=HORIZONTAL)
         self.var_thread_num.grid(row=0, column=0, padx=1, pady=4, columnspan=1)
         Canvas(download_config_frame, width=77, height=0).grid(row=0, column=1, padx=1, pady=1, columnspan=2)
-        self.download_button = Button(root, text='开始下载', width=10, padx=0, pady=0, command=self.start2download)
-        self.download_button.place(x=297, y=248)
+        Button(root, text='开始下载', width=10, padx=0, pady=0, command=self.start2download).place(x=297, y=248)
         download_config_frame.place(x=2, y=208)
 
 
@@ -200,7 +192,6 @@ class Download:
         self.startTime_G = time.time()  # Global
         self.plyNoQueue = Queue(self.data_num)
         for i in range(self.data_num):
-            self.download_button['state'] = 'disabled'
             self.plyNoQueue.put(self.plyNoLst[i])
         thread_num = int(self.var_thread_num.get())
         self.download_path = self.var_download_path.get()
@@ -242,7 +233,7 @@ class Download:
 
 
     def about(self):
-        about_info = '使用方法：\n1 .txt 文件导入：每行一个保单号\n2 Excel 文件导入：第一个sheet中有一列“保单号”且没有重名列\n\nE-POLICY DOWNLOAD FOR AIC\nmrmmmt_ 制作 v1.2 (Build 20210421)\nE-mail：mmmt123321@126.com'
+        about_info = '使用方法：\n1 .txt 文件导入：每行一个保单号\n2 Excel 文件导入：第一个sheet中有一列“保单号”且没有重名列\n\nE-POLICY DOWNLOAD FOR AIC\nmrmmmt_ 制作 v1.1 (Build 20210416)\nE-mail：mmmt123321@126.com'
         messagebox.showinfo('关于', about_info)
 
 
@@ -264,10 +255,6 @@ class Download:
         save_name = self.download_path + '/' + plyNo + '.pdf'
         start_time = time.time()
         while True:
-            if os.path.exists(save_name):
-                if os.path.getsize(save_name) > 150000:
-                    flag = '成功'
-                    break        
             if time.time() - start_time > 30:
                 self.download_erro_lst.append(plyNo + '.pdf' + '  下载超时')
                 os.remove(save_name)
@@ -276,7 +263,10 @@ class Download:
             r = requests.get(url, headers=headers)
             with open(save_name, 'wb') as f:
                 f.write(r.content)
-
+            if os.path.getsize(save_name) > 150000:
+                flag = '成功'
+                break
+        
         self.mutex_lock.acquire()
         self.download_finish_count += 1
         self.log_info_window['state'] = 'normal'
@@ -289,7 +279,6 @@ class Download:
             self.log_info_window.insert(END, '\n下载完成，共下载{}单，{}单下载超时，共耗时{:.2f}秒'.format(self.download_finish_count, len(self.download_erro_lst), time.time()-self.startTime_G)+'\n')
             self.log_info_window['state'] = 'disabled'
             self.log_info_window.see(END)
-            self.download_button['state'] = 'normal'
             if len(self.download_erro_lst) > 0:
                 for i, download_erro_info in enumerate(self.download_erro_lst):
                     self.log_info_window['state'] = 'normal'
