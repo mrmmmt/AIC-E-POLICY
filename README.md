@@ -20,14 +20,16 @@
 直接将虚拟环境复制到另一台机器，直接执行是会有问题的。
 
 #### 有网环境
+1. 激活虚拟环境
+2. 打包环境 `$ pip freeze --all > requirements.txt`
+3. 安装环境 `$ pip install -r requirements.txt`
 
-- 1. 激活虚拟环境
-- 2. 打包环境 `$ pip freeze --all > requirements.txt`
-- 3. 安装环境 `$ pip install -r requirements.txt`
-- 无网环境
-  - 1. 激活虚拟环境
-  - 2. 打包环境
-  - 3. 安装环境
+#### 无网环境
+1. 激活虚拟环境
+2. 打包环境
+3. 安装环境
+
+### 文件打包
 
 使用 pyinstaller 进行 Python 文件的打包，生成可执行程序
 
