@@ -1,8 +1,11 @@
 # AIC-E-POLICY 电子保单下载
 利用 AIC 官网下载电子保单接口，实现 AIC 电子保单的自动批量下载，并利用 Python 标准 GUI 库 Tkinter 实现界面化。
 
+
 ## 依赖和打包
-仓库中 [env](http://www.baidu.com) 为包含所有依赖项的 Python 虚拟环境，虚拟环境 Python 版本为 3.8.3
+
+### 虚拟环境
+仓库中 [env](http://www.baidu.com) 为包含所有依赖项的 Python 虚拟环境，虚拟环境 Python 版本为 3.8.3，利用虚拟环境打包可以避免打包后文件过大的问题。
 - 虚拟环境安装 `$ pip install virtualenv`
 - 虚拟环境创建 `$ python -m venv env` 环境名称为 `env`
 - 虚拟环境激活 `$ env\Scripts\activate`
@@ -11,6 +14,18 @@
 由于较新版本的 xlrd 库只支持 .xls 文件，不支持 .xlsx，会提示 `Excel xlsx file； not supported` 错误，故需要使用旧版本的 xlrd 库，版本为 1.2.0。
 
 `$ pip install xlrd==1.2.0`
+
+### 虚拟环境迁移
+
+直接将虚拟环境复制到另一台机器，直接执行是会有问题的。
+- 有网环境
+  - 1. 激活虚拟环境
+  - 2. 打包环境 `$ pip freeze --all > requirements.txt`
+  - 3. 安装环境 `$ pip install -r requirements.txt`
+- 无网环境
+  - 1. 激活虚拟环境
+  - 2. 打包环境
+  - 3. 安装环境
 
 使用 pyinstaller 进行 Python 文件的打包，生成可执行程序
 
