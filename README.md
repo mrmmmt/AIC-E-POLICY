@@ -18,10 +18,12 @@
 ### 虚拟环境迁移
 
 直接将虚拟环境复制到另一台机器，直接执行是会有问题的。
-- 有网环境
-  - 1. 激活虚拟环境
-  - 2. 打包环境 `$ pip freeze --all > requirements.txt`
-  - 3. 安装环境 `$ pip install -r requirements.txt`
+
+#### 有网环境
+
+- 1. 激活虚拟环境
+- 2. 打包环境 `$ pip freeze --all > requirements.txt`
+- 3. 安装环境 `$ pip install -r requirements.txt`
 - 无网环境
   - 1. 激活虚拟环境
   - 2. 打包环境
