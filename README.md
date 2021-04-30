@@ -21,13 +21,14 @@
 
 #### 有网环境
 1. 激活虚拟环境
-2. 打包环境 `$ pip freeze --all > requirements.txt`
+2. 打包环境 `$ pip freeze > requirements.txt`
 3. 安装环境 `$ pip install -r requirements.txt`
 
 #### 无网环境
 1. 激活虚拟环境
-2. 打包环境
-3. 安装环境
+2. 打包环境 `$ pip freeze > requirements.txt`
+3. 下载环境 `$ pip download -d packages -r requirements.txt`
+4. 安装环境 `$ pip install --no-index --find-links=packages -r requirements.txt`
 
 ### 文件打包
 
