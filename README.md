@@ -5,7 +5,7 @@
 ## 依赖和打包
 
 ### 虚拟环境
-仓库中 [env](http://www.baidu.com) 为包含所有依赖项的 Python 虚拟环境，虚拟环境 Python 版本为 3.8.3，利用虚拟环境打包可以避免打包后文件过大的问题。
+直接用 pyinstaller 对 Python 脚本进行打包，会将不需要的模块也进行打包，导致打包后的文件过大，利用虚拟环境打包可以避免打包后文件过大的问题。
 - 虚拟环境安装 `$ pip install virtualenv`
 - 虚拟环境创建 `$ python -m venv env` 环境名称为 `env`
 - 虚拟环境激活 `$ env\Scripts\activate`
